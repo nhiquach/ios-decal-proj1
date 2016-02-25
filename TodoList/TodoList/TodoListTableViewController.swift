@@ -10,16 +10,34 @@ import UIKit
 
 class TodoListTableViewController: UITableViewController {
 
-    var tasks: NSMutableArray = []
+    @IBOutlet var taskTable: TaskTableView!
+    var tasks = [Task]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadSampleTasks()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+    }
+    
+    func loadSampleTasks() {
+        tasks.append(Task(text: "feed the cat"))
+        tasks.append(Task(text: "buy eggs"))
+        tasks.append(Task(text: "watch WWDC videos"))
+        tasks.append(Task(text: "rule the Web"))
+        tasks.append(Task(text: "buy a new iPhone"))
+        tasks.append(Task(text: "darn holes in socks"))
+        tasks.append(Task(text: "write this tutorial"))
+        tasks.append(Task(text: "master Swift"))
+        tasks.append(Task(text: "learn to draw"))
+        tasks.append(Task(text: "get more exercise"))
+        tasks.append(Task(text: "catch up with Mom"))
+        tasks.append(Task(text: "get a hair cut"))
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,6 +45,8 @@ class TodoListTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) { }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -36,18 +56,18 @@ class TodoListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.tasks.count
+        return tasks.count
     }
-
-    /*
+    
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        let cellIdentifier = "TaskTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TaskTableViewCell
+        let task = tasks[indexPath.row]
+        cell.taskLabel.text = task.text
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

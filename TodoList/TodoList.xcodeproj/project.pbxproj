@@ -14,6 +14,7 @@
 		3C0F1B9F1C7D871400AAF44F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C0F1B9D1C7D871400AAF44F /* LaunchScreen.storyboard */; };
 		3C0F1BAA1C7D871400AAF44F /* TodoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0F1BA91C7D871400AAF44F /* TodoListTests.swift */; };
 		3C0F1BB51C7D871400AAF44F /* TodoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0F1BB41C7D871400AAF44F /* TodoListUITests.swift */; };
+		3C4EDCAD1C7E4834001AD053 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4EDCAC1C7E4834001AD053 /* StatsViewController.swift */; };
 		3C7A0B821C7D9092009C83A9 /* TodoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7A0B811C7D9092009C83A9 /* TodoListTableViewController.swift */; };
 		3C7A0B841C7D9296009C83A9 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7A0B831C7D9296009C83A9 /* TaskTableViewCell.swift */; };
 		3C7A0B861C7D944D009C83A9 /* TaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7A0B851C7D944D009C83A9 /* TaskTableView.swift */; };
@@ -52,6 +53,7 @@
 		3C0F1BB01C7D871400AAF44F /* TodoListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C0F1BB41C7D871400AAF44F /* TodoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListUITests.swift; sourceTree = "<group>"; };
 		3C0F1BB61C7D871400AAF44F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C4EDCAC1C7E4834001AD053 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		3C7A0B811C7D9092009C83A9 /* TodoListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListTableViewController.swift; sourceTree = "<group>"; };
 		3C7A0B831C7D9296009C83A9 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		3C7A0B851C7D944D009C83A9 /* TaskTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableView.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				3C0F1B941C7D871400AAF44F /* AppDelegate.swift */,
 				3C0F1B961C7D871400AAF44F /* ViewController.swift */,
 				3C0F1B981C7D871400AAF44F /* Main.storyboard */,
+				3C4EDCAC1C7E4834001AD053 /* StatsViewController.swift */,
 				3C7A0B871C7D97D8009C83A9 /* AddTaskViewController.swift */,
 				3C7A0B851C7D944D009C83A9 /* TaskTableView.swift */,
 				3C7A0B811C7D9092009C83A9 /* TodoListTableViewController.swift */,
@@ -276,6 +279,7 @@
 			files = (
 				3C7A0B841C7D9296009C83A9 /* TaskTableViewCell.swift in Sources */,
 				3C7A0B881C7D97D8009C83A9 /* AddTaskViewController.swift in Sources */,
+				3C4EDCAD1C7E4834001AD053 /* StatsViewController.swift in Sources */,
 				3C7A0B861C7D944D009C83A9 /* TaskTableView.swift in Sources */,
 				3C0F1B971C7D871400AAF44F /* ViewController.swift in Sources */,
 				3C0F1B951C7D871400AAF44F /* AppDelegate.swift in Sources */,

@@ -1,14 +1,14 @@
 //
-//  AddTaskViewController.swift
+//  StatsViewController.swift
 //  TodoList
 //
-//  Created by Nhi Quach on 2/23/16.
+//  Created by Nhi Quach on 2/24/16.
 //  Copyright © 2016 Nhi Quach. All rights reserved.
 //
 
 import UIKit
 
-class AddTaskViewController: UIViewController {
+class StatsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,6 @@ class AddTaskViewController: UIViewController {
     
     @IBAction func unwindSegue(segue: UIStoryboardSegue) { }
     
-
     /*
     // MARK: - Navigation
 
