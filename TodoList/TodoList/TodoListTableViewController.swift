@@ -15,7 +15,6 @@ class TodoListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSampleTasks()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -25,27 +24,22 @@ class TodoListTableViewController: UITableViewController {
         
     }
     
-    func loadSampleTasks() {
-        tasks.append(Task(text: "feed the cat"))
-        tasks.append(Task(text: "buy eggs"))
-        tasks.append(Task(text: "watch WWDC videos"))
-        tasks.append(Task(text: "rule the Web"))
-        tasks.append(Task(text: "buy a new iPhone"))
-        tasks.append(Task(text: "darn holes in socks"))
-        tasks.append(Task(text: "write this tutorial"))
-        tasks.append(Task(text: "master Swift"))
-        tasks.append(Task(text: "learn to draw"))
-        tasks.append(Task(text: "get more exercise"))
-        tasks.append(Task(text: "catch up with Mom"))
-        tasks.append(Task(text: "get a hair cut"))
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func unwindSegue(segue: UIStoryboardSegue) { }
+    @IBAction func unwindToList(segue: UIStoryboardSegue) {
+        if segue.identifier == "unwindFromSave" {
+            let source: AddTaskViewController = segue.sourceViewController as! AddTaskViewController
+            let task: Task? = source.task!
+            
+            if task != nil {
+                self.tasks.append(task!)
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     // MARK: - Table view data source
 
@@ -65,53 +59,39 @@ class TodoListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TaskTableViewCell
         let task = tasks[indexPath.row]
         cell.taskLabel.text = task.text
+        if task.completed {
+            cell.accessoryType = .Checkmark
+        } else {
+            cell.accessoryType = .None
+        }
         return cell
+        
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        let tappedItem: Task = tasks[indexPath.row] as Task
+        tappedItem.completed = !tappedItem.completed
+        if tappedItem.completed {
+            tappedItem.timeCompleted = NSDateComponents().day
+        } else {
+            tappedItem.timeCompleted = nil
+        }
+        tableView.reloadData()
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "goToStats" {
+            let destVC = segue.destinationViewController as! StatsViewController
+            destVC.tasks = self.tasks
+        }
     }
-    */
+
 
 }

@@ -10,9 +10,25 @@ import UIKit
 
 class StatsViewController: UIViewController {
 
+    var numberOfTasksCompleted : Int?
+    var tasks : [Task]?
+    
+    @IBOutlet weak var completedLabel: UILabel!
+    
+    override func viewWillAppear(animated: Bool) {
+        let currentDate = NSDateComponents().day
+        var completedCount = 0
+        for task in self.tasks! {
+            if task.timeCompleted == currentDate {
+                completedCount += 1
+            }
+        }
+        numberOfTasksCompleted = completedCount
+        self.completedLabel.text = String(numberOfTasksCompleted!)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -20,8 +36,7 @@ class StatsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func unwindSegue(segue: UIStoryboardSegue) { }
+
     
     /*
     // MARK: - Navigation

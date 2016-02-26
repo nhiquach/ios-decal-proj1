@@ -10,11 +10,10 @@ import UIKit
 
 class Task: NSObject {
 
-    // A text description of this item.
     var text: String
-    
-    // A Boolean value that determines the completed state of this item.
     var completed: Bool
+    var timeCompleted: Int?
+    
     
     // Returns a ToDoItem initialized with the given text and default completed value.
     init(text: String) {

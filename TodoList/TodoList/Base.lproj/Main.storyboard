@@ -23,19 +23,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gC-RK-PXM">
-                                            <rect key="frame" x="43" y="13" width="454" height="35"/>
+                                            <rect key="frame" x="20" y="13" width="454" height="35"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="454" id="8Du-MB-ljf"/>
                                                 <constraint firstAttribute="height" constant="35" id="uLu-bC-jmp"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="3gC-RK-PXM" firstAttribute="centerY" secondItem="bQw-ht-KgJ" secondAttribute="centerY" id="8fv-Aw-iYJ"/>
-                                        <constraint firstItem="3gC-RK-PXM" firstAttribute="leading" secondItem="bQw-ht-KgJ" secondAttribute="leadingMargin" constant="35" id="bRo-Xb-Hoy"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="3gC-RK-PXM" secondAttribute="leading" constant="-12" id="EE0-zb-wTS"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -51,12 +51,12 @@
                     <navigationItem key="navigationItem" title="Tasks" id="Jk9-n6-pJl">
                         <barButtonItem key="leftBarButtonItem" title="Stats" id="ahc-5o-cAj">
                             <connections>
-                                <segue destination="dhF-Op-RNW" kind="show" id="Dtq-5S-GNY"/>
+                                <segue destination="bYW-ps-Wz1" kind="show" identifier="goToStats" id="UJs-w5-dQx"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="RqI-GN-3pT">
                             <connections>
-                                <segue destination="2E3-Ea-xIa" kind="show" id="xSM-nS-nIh"/>
+                                <segue destination="2E3-Ea-xIa" kind="presentation" id="dHt-QQ-khp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -66,7 +66,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Obm-jQ-e6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747" y="318"/>
+            <point key="canvasLocation" x="1765" y="360"/>
         </scene>
         <!--Add Task-->
         <scene sceneID="Cag-sL-8yq">
@@ -79,16 +79,37 @@
                     <view key="view" contentMode="scaleToFill" id="1YY-Qt-1cE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a to-do..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j1Q-Kw-ha1">
+                                <rect key="frame" x="93" y="285" width="414" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="j1Q-Kw-ha1" firstAttribute="leading" secondItem="1YY-Qt-1cE" secondAttribute="leadingMargin" constant="73" id="2yL-HY-zUc"/>
+                            <constraint firstItem="j1Q-Kw-ha1" firstAttribute="centerX" secondItem="1YY-Qt-1cE" secondAttribute="centerX" id="KGN-YG-SIQ"/>
+                            <constraint firstItem="j1Q-Kw-ha1" firstAttribute="centerY" secondItem="1YY-Qt-1cE" secondAttribute="centerY" id="UGB-HB-Qji"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="j1Q-Kw-ha1" secondAttribute="trailing" constant="73" id="ba4-7W-kGk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Task" id="Srb-yY-vbL">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3Sn-Sn-M9S">
                             <connections>
-                                <segue destination="kVb-dD-Ivp" kind="unwind" unwindAction="unwindSegue:" id="UMr-hG-EGe"/>
+                                <segue destination="kVb-dD-Ivp" kind="unwind" identifier="unwindFromCancel" unwindAction="unwindToList:" id="GIJ-8N-brf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="82D-9E-EAh"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="82D-9E-EAh">
+                            <connections>
+                                <segue destination="kVb-dD-Ivp" kind="unwind" identifier="unwindFromSave" unwindAction="unwindToList:" id="5kY-Nw-JVG"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="saveButton" destination="82D-9E-EAh" id="WXH-9C-aex"/>
+                        <outlet property="taskField" destination="j1Q-Kw-ha1" id="bSr-gH-wYd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Kv-KD-NGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="kVb-dD-Ivp" userLabel="Exit" sceneMemberID="exit"/>
@@ -142,39 +163,47 @@
                     <view key="view" contentMode="scaleToFill" id="odE-nt-PTn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tasks completed today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNz-W4-36H">
+                                <rect key="frame" x="174" y="458" width="252" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yr9-ez-uYx">
+                                <rect key="frame" x="175" y="175" width="250" height="251"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="251" id="2IH-Ml-UmN"/>
+                                    <constraint firstAttribute="width" constant="250" id="ttq-Au-VYC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="176"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Yr9-ez-uYx" firstAttribute="centerX" secondItem="odE-nt-PTn" secondAttribute="centerX" id="7H6-8D-8JA"/>
+                            <constraint firstItem="Yr9-ez-uYx" firstAttribute="centerY" secondItem="odE-nt-PTn" secondAttribute="centerY" id="Ylc-SO-fZ8"/>
+                            <constraint firstItem="ZNz-W4-36H" firstAttribute="centerX" secondItem="odE-nt-PTn" secondAttribute="centerX" id="aEt-I0-wJv"/>
+                            <constraint firstItem="ZNz-W4-36H" firstAttribute="top" secondItem="Yr9-ez-uYx" secondAttribute="bottom" constant="32" id="beW-hf-FJs"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Daily Statistics" id="yAn-7Q-nuX">
                         <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="j3S-qZ-2v5">
                             <connections>
-                                <segue destination="Hzm-t9-DGI" kind="unwind" unwindAction="unwindSegue:" id="amr-k6-4NZ"/>
+                                <segue destination="Hzm-t9-DGI" kind="unwind" unwindAction="unwindToList:" id="SKZ-wz-qEr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="completedLabel" destination="Yr9-ez-uYx" id="V4K-QJ-3gc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28P-pU-WO6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Hzm-t9-DGI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2569" y="1187"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="LQc-w2-AXq">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dhF-Op-RNW" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="qwH-pe-U1C"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rZp-3I-ZNT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="bYW-ps-Wz1" kind="relationship" relationship="rootViewController" id="cRh-H2-0pW"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PXh-XO-zIj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1731" y="1187"/>
+            <point key="canvasLocation" x="1867" y="1159"/>
         </scene>
     </scenes>
 </document>
