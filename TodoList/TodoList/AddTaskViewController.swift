@@ -42,6 +42,7 @@ class AddTaskViewController: UIViewController {
         if self.taskField.text != "" {
             self.task = Task(text: self.taskField.text!)
         }
+        return
     }
 
 

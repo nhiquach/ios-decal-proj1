@@ -49,7 +49,7 @@ class TodoListTableViewController: UITableViewController {
     @IBAction func unwindToList(segue: UIStoryboardSegue) {
         if segue.identifier == "unwindFromSave" {
             let source: AddTaskViewController = segue.sourceViewController as! AddTaskViewController
-            let task: Task? = source.task!
+            let task: Task? = source.task
             
             if task != nil {
                 self.tasks.append(task!)
@@ -77,7 +77,9 @@ class TodoListTableViewController: UITableViewController {
         let task = tasks[indexPath.row]
         cell.taskLabel.text = task.text
         if task.completed {
-            cell.accessoryType = .Checkmark
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: task.text)
+            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
+            cell.taskLabel.attributedText = attributeString
         } else {
             cell.accessoryType = .None
         }
