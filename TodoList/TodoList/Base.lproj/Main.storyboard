@@ -164,29 +164,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tasks completed today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNz-W4-36H">
-                                <rect key="frame" x="174" y="458" width="252" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yr9-ez-uYx">
                                 <rect key="frame" x="175" y="175" width="250" height="251"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="251" id="2IH-Ml-UmN"/>
-                                    <constraint firstAttribute="width" constant="250" id="ttq-Au-VYC"/>
+                                    <constraint firstAttribute="width" constant="250" id="5cB-iX-AtL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="176"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tasks completed in the past 24 hours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="ZNz-W4-36H">
+                                <rect key="frame" x="57" y="458" width="484" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Yr9-ez-uYx" firstAttribute="centerX" secondItem="odE-nt-PTn" secondAttribute="centerX" id="7H6-8D-8JA"/>
+                            <constraint firstItem="ZNz-W4-36H" firstAttribute="centerX" secondItem="Yr9-ez-uYx" secondAttribute="centerX" constant="-1" id="BaG-Ky-9mP"/>
                             <constraint firstItem="Yr9-ez-uYx" firstAttribute="centerY" secondItem="odE-nt-PTn" secondAttribute="centerY" id="Ylc-SO-fZ8"/>
-                            <constraint firstItem="ZNz-W4-36H" firstAttribute="centerX" secondItem="odE-nt-PTn" secondAttribute="centerX" id="aEt-I0-wJv"/>
                             <constraint firstItem="ZNz-W4-36H" firstAttribute="top" secondItem="Yr9-ez-uYx" secondAttribute="bottom" constant="32" id="beW-hf-FJs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZNz-W4-36H" secondAttribute="trailing" constant="39" id="id4-yS-6Ev"/>
+                            <constraint firstItem="Yr9-ez-uYx" firstAttribute="centerX" secondItem="odE-nt-PTn" secondAttribute="centerX" id="o3N-mY-DUL"/>
+                            <constraint firstItem="ZNz-W4-36H" firstAttribute="leading" secondItem="odE-nt-PTn" secondAttribute="leadingMargin" constant="37" id="otp-dB-Q1q"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Daily Statistics" id="yAn-7Q-nuX">

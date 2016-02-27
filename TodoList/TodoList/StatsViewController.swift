@@ -16,15 +16,18 @@ class StatsViewController: UIViewController {
     @IBOutlet weak var completedLabel: UILabel!
     
     override func viewWillAppear(animated: Bool) {
-        let currentDate = NSDateComponents().day
+        let currentDate = NSDate()
         var completedCount = 0
         for task in self.tasks! {
-            if task.timeCompleted == currentDate {
-                completedCount += 1
+            let dayCompleted: NSDate? = task.timeCompleted
+            if dayCompleted != nil {
+                if currentDate.timeIntervalSinceDate(dayCompleted!) < 86400 {
+                    completedCount += 1
+                }
             }
-        }
         numberOfTasksCompleted = completedCount
         self.completedLabel.text = String(numberOfTasksCompleted!)
+        }
     }
     
     override func viewDidLoad() {

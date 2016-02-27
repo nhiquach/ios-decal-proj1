@@ -13,9 +13,26 @@ class TodoListTableViewController: UITableViewController {
     @IBOutlet var taskTable: TaskTableView!
     var tasks = [Task]()
     
+    override func viewWillAppear(animated: Bool) {
+        var newTasks = [Task]()
+        let currentDate = NSDate()
+        for task in tasks {
+            let dayCompleted: NSDate? = task.timeCompleted
+            if dayCompleted != nil {
+                if currentDate.timeIntervalSinceDate(dayCompleted!) < 86400 {
+                    newTasks.append(task)
+                }
+            } else {
+                newTasks.append(task)
+            }
+        }
+        tasks = newTasks
+        self.tableView.reloadData()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -73,13 +90,23 @@ class TodoListTableViewController: UITableViewController {
         let tappedItem: Task = tasks[indexPath.row] as Task
         tappedItem.completed = !tappedItem.completed
         if tappedItem.completed {
-            tappedItem.timeCompleted = NSDateComponents().day
+            tappedItem.timeCompleted = NSDate()
         } else {
             tappedItem.timeCompleted = nil
         }
         tableView.reloadData()
     }
     
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            tasks.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+        }
+    }
     
     // MARK: - Navigation
 

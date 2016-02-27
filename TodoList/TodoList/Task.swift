@@ -12,7 +12,7 @@ class Task: NSObject {
 
     var text: String
     var completed: Bool
-    var timeCompleted: Int?
+    var timeCompleted: NSDate?
     
     
     // Returns a ToDoItem initialized with the given text and default completed value.
